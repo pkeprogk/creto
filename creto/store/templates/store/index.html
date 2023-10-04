@@ -1,10 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'store/base.html' %}
 
-</body>
-</html>
+{% load static %}
+
+{% block content %}
+
+<section class="s-main-slider">
+    <div class="main-slide-navigation"></div>
+    <ul class="main-soc-list">
+        <li><a href="#">youtube</a></li>
+        <li><a href="#">twitter</a></li>
+        <li><a href="#">instagram</a></li>
+    </ul>
+    <div class="main-slider">
+        {% for bike in bicycles %}
+        <div class="main-slide">
+            <div class="main-slide-bg"
+                 style="background-image: {% static 'img/bg-slider.svg' %};">
+            </div>
+            <div class="container">
+                <div class="main-slide-info">
+                    <h2 class="title">best bikes for you</h2>
+                    <p>Select from our nevest models!</p>
+                    <a href="#" class="btn"><span>buy now</span></a>
+                </div>
+                <div class="slide-img-cover">
+                    <a href="#" class="lable-bike">
+                        <div class="lable-bike-img"><img src="{% static 'img/bike-info-slide-e-bike.jpg' %}" alt="img"></div>
+                        <div class="lable-bike-item">
+                            <div class="model">{{ bike.bicycle_name }}</div>
+                            <div class="price">${{ bike.bicycle_price }}</div>
+                        </div>
+                    </a>
+                    <img src="{{ bike.bicycle_image.url }}" alt="img"
+                         class="slide-img">
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!--==================== SCRIPT	====================-->
+	<script src="{% static 'js/jquery-2.2.4.min.js' %}"></script>
+	<script src="{% static 'js/slick.min.js' %}"></script>
+	<script src="{% static 'js/jquery.nice-select.js' %}"></script>
+	<script src="{% static 'js/wow.js' %}"></script>
+	<script src="{% static 'js/lazyload.min.js' %}"></script>
+	<script src="{% static 'js/scripts.js' %}"></script>
+
+{% endblock %}
+
+
+

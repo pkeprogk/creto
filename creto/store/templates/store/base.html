@@ -1,10 +1,40 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{% block title %} {% endblock %}</title>
+    <!-- =================== META =================== -->
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="shortcut icon" href="{% static 'img/favicon.png' %}">
+	<!-- =================== STYLE =================== -->
+	<link rel="stylesheet" href="{% static 'css/slick.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap-grid.css' %}">
+	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
 
+<!--================ PRELOADER ================-->
+	<div class="preloader-cover">
+		<div class="preloader">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+	<!--============== PRELOADER END ==============-->
+
+{% include 'store/navbar.html' %}
+
+{% block content %}
+
+{% endblock %}
 </body>
 </html>
