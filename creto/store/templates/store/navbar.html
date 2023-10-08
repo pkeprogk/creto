@@ -34,7 +34,7 @@
     </div>
     <div class="header-menu">
         <div class="container">
-            <a href="#" class="logo"><img src="{% static 'img/logo.svg' %}" alt="logo"></a>
+            <a href="{% url 'main-page' %}" class="logo"><img src="{% static 'img/logo.svg' %}" alt="logo"></a>
             <nav class="nav-menu">
                 <ul class="nav-list">
                     <li class="dropdown">
@@ -55,7 +55,7 @@
                             <li><a href="404.html">Page error 404</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Contacts</a></li>
+                    <li><a href="{% url 'contacts' %}">Contacts</a></li>
                 </ul>
             </nav>
         </div>
