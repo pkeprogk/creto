@@ -2,6 +2,8 @@
 {% load static %}
 {% block content %}
 
+
+<!-- =============== main-slider =============== -->
 <section class="s-main-slider">
 		<div class="main-slide-navigation"></div>
 		<ul class="main-soc-list">
@@ -11,7 +13,7 @@
 		</ul>
 		<div class="main-slider">
 			<div class="main-slide">
-				<div class="main-slide-bg" style="background-image: {% static 'img/bg-slider.svg' %});"></div>
+				<div class="main-slide-bg" style="background-image: url(static/img/bg-slider.svg);"></div>
 				<div class="container">
 					<div class="main-slide-info">
 						<h2 class="title">best bikes for you</h2>
@@ -115,7 +117,285 @@
 				</div>
 			</div>
 		</div>
+</section>
+<!-- ============= main-slider end ============= -->
+
+
+<!--================ S-FIND-BIKE ================-->
+<section class="s-find-bike">
+		<div class="container">
+			<form class="find-bike-form">
+				<h2 class="title">find the bike</h2>
+				<ul class="form-wrap">
+					<li>
+						<label>Type</label>
+						<select class="nice-select">
+							<option selected="selected">Select bicycle type</option>
+							{% for type in bicycle_types %}
+							<option>{{ type }}</option>
+							{% endfor %}
+						</select>
+					</li>
+					<li>
+						<label>Class</label>
+						<select class="nice-select">
+							<option selected="selected">Select bicycle class</option>
+							{% for class in bicycle_classes %}
+							<option>{{ class }}</option>
+							{% endfor %}
+						</select>
+					</li>
+					<li>
+						<label>Brand</label>
+						<select class="nice-select">
+							<option selected="selected">Select brand</option>
+							{% for brand in bicycle_brands %}
+							<option>{{ brand }}</option>
+							{% endfor %}
+						</select>
+					</li>
+					<li><a href="shop.html" class="btn"><span>search</span></a></li>
+				</ul>
+			</form>
+		</div>
 	</section>
+<!--============== S-FIND-BIKE END ==============-->
+
+
+<!--============== S-CATEGORY-BICYKLE ==============-->
+<section class="s-category-bicycle">
+		<div class="container">
+			<div class="slider-categ-bicycle">
+				<div class="slide-categ-bicycle">
+					<div class="categ-bicycle-item">
+						<img src="assets/img/categ-2.png" alt="category">
+						<div class="categ-bicycle-info">
+							<h4 class="title">mountain <br>& road bikes</h4>
+							<a href="shop.html" class="btn"><span>view more</span></a>
+						</div>
+					</div>
+				</div>
+				<div class="slide-categ-bicycle">
+					<div class="categ-bicycle-item">
+						<img src="assets/img/categ-3.png" alt="category">
+						<div class="categ-bicycle-info">
+							<h4 class="title">bicycle <br>spare parts</h4>
+							<a href="shop.html" class="btn"><span>view more</span></a>
+						</div>
+					</div>
+				</div>
+				<div class="slide-categ-bicycle">
+					<div class="categ-bicycle-item">
+						<img src="assets/img/categ-1.png" alt="category">
+						<div class="categ-bicycle-info">
+							<h4 class="title">accessories <br>& clothing</h4>
+							<a href="shop.html" class="btn"><span>view more</span></a>
+						</div>
+					</div>
+				</div>
+				<div class="slide-categ-bicycle">
+					<div class="categ-bicycle-item">
+						<img src="assets/img/categ-3.png" alt="category">
+						<div class="categ-bicycle-info">
+							<h4 class="title">bicycle <br>spare parts</h4>
+							<a href="shop.html" class="btn"><span>view more</span></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+<!--============ S-CATEGORY-BICYKLE END ============-->
+
+
+<!--=============== S-OUR-ADVANTAGES ===============-->
+<section class="s-our-advantages" style="">
+		<span class="mask"></span>
+		<div class="container">
+			<h2 class="title">Our Advantages</h2>
+			<div class="our-advantages-wrap">
+				<div class="our-advantages-item">
+					<img class="lazy"
+						 src="{% static 'img/placeholder-all.png' %}"
+						 data-src="{% static 'img/advantages-1.svg' %}" alt="icon">
+					<h5>Free shipping <br>from $500</h5>
+				</div>
+				<div class="our-advantages-item">
+					<img class="lazy"
+						 src="{% static 'img/placeholder-all.png' %}"
+						 data-src="{% static 'img/advantages-2.svg' %}" alt="icon">
+					<h5>Warranty service <br>for 3 months</h5>
+				</div>
+				<div class="our-advantages-item">
+					<img class="lazy"
+						 src="{% static 'img/placeholder-all.png' %}"
+						 data-src="{% static 'img/advantages-3.svg' %}" alt="icon">
+					<h5>Exchange and return <br>within 14 days</h5>
+				</div>
+				<div class="our-advantages-item">
+					<img class="lazy"
+						 src="{% static 'img/placeholder-all.png' %}"
+						 data-src="{% static 'img/advantages-4.svg' %}" alt="icon">
+					<h5>Discounts for <br>customers</h5>
+				</div>
+			</div>
+		</div>
+	</section>
+<!--============= S-OUR-ADVANTAGES END =============-->
+
+
+<!--================== S-OUR-NEWS ==================-->
+<section class="s-our-news">
+		<div class="container">
+			<h2 class="title">Our News</h2>
+			<div class="news-cover row">
+				<div class="col-12 col-md-6 col-lg-4">
+					<div class="news-item">
+						<h6 class="title"><a href="news.html">doloremque laudantium, totam rem aperiam, eaque ipsa quae</a></h6>
+						<div class="news-post-thumbnail">
+							<a href="news.html"><img class="lazy" src="assets/img/placeholder-all.png" data-src="assets/img/news-1.jpg" alt="news"></a>
+						</div>
+						<div class="meta">
+							<span class="date"><i class="fa fa-calendar" aria-hidden="true"></i> Dec 26,2019</span>
+							<span class="post-by"><i class="fa fa-user" aria-hidden="true"></i> By <a href="#">Samson</a></span>
+						</div>
+						<div class="post-content">
+							<p>Sed ut perspiciatis unde omnis iste natus  sit voluptatem accusantium doloremque lauda ntium, totam rem aperiam, eaque.</p>
+						</div>
+						<a href="news.html" class="btn-news">read more</a>
+					</div>
+				</div>
+				<div class="col-12 col-md-6 col-lg-4">
+					<div class="news-item">
+						<h6 class="title"><a href="news.html">At vero eos et accusamus et iusto odio dignissimos ducim</a></h6>
+						<div class="news-post-thumbnail">
+							<a href="single-news.html"><img class="lazy" src="assets/img/placeholder-all.png" data-src="assets/img/news-2.jpg" alt="news"></a>
+						</div>
+						<div class="meta">
+							<span class="date"><i class="fa fa-calendar" aria-hidden="true"></i> Dec 26,2019</span>
+							<span class="post-by"><i class="fa fa-user" aria-hidden="true"></i> By <a href="#">Samson</a></span>
+						</div>
+						<div class="post-content">
+							<p>Corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui.</p>
+						</div>
+						<a href="single-news.html" class="btn-news">read more</a>
+					</div>
+				</div>
+				<div class="col-12 col-md-6 col-lg-4">
+					<div class="news-item">
+						<h6 class="title"><a href="news.html">On the other hand, we denounce with righteous indignation a</a></h6>
+						<div class="news-post-thumbnail">
+							<a href="news.html"><img class="lazy" src="assets/img/placeholder-all.png" data-src="assets/img/news-3.jpg" alt="news"></a>
+						</div>
+						<div class="meta">
+							<span class="date"><i class="fa fa-calendar" aria-hidden="true"></i> Dec 26,2019</span>
+							<span class="post-by"><i class="fa fa-user" aria-hidden="true"></i> By <a href="#">Samson</a></span>
+						</div>
+						<div class="post-content">
+							<p>Blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those.</p>
+						</div>
+						<a href="single-news.html" class="btn-news">read more</a>
+					</div>
+				</div>
+			</div>
+			<div class="btn-cover"><a class="btn" href="news.html"><span>view more</span></a></div>
+		</div>
+	</section>
+<!--================ S-OUR-NEWS END ================-->
+
+
+<!--================== S-FEEDBACK ==================-->
+<section class="s-feedback" style="background-image: url(assets/img/bg-feedback.jpg);">
+		<span class="effwct-bg-feedback" style="background-image: url(assets/img/effect-bg-feedback.svg);"></span>
+		<span class="mask"></span>
+		<div class="container">
+			<h2 class="title">feedback</h2>
+			<div class="feedback-slider">
+				<div class="feedback-slide">
+					<div class="feedback-item">
+						<div class="feedback-content">
+							<p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempoinc ididunt ut magna aliqua dolor sit amet, consectetur adipiscing elit magna”</p>
+						</div>
+						<div class="feedback-item-top">
+							<img src="assets/img/feedback-photo-1.png" alt="photo">
+							<div class="feedback-title">
+								<h5 class="title"><span>Li piters</span></h5>
+								<ul class="rating">
+									<li class="star-bg"><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li class="star-bg"><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li class="star-bg"><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li class="star-bg"><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li class="star-not-bg"><i class="fa fa-star-o" aria-hidden="true"></i></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="feedback-slide">
+					<div class="feedback-item">
+						<div class="feedback-content">
+							<p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempoinc ididunt ut magna aliqua dolor sit amet, consectetur adipiscing elit magna”</p>
+						</div>
+						<div class="feedback-item-top">
+							<img src="assets/img/feedback-photo-2.png" alt="photo">
+							<div class="feedback-title">
+								<h5 class="title"><span>Sam Barton</span></h5>
+								<ul class="rating">
+									<li class="star-bg"><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li class="star-bg"><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li class="star-bg"><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li class="star-bg"><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li class="star-not-bg"><i class="fa fa-star-o" aria-hidden="true"></i></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="feedback-slide">
+					<div class="feedback-item">
+						<div class="feedback-content">
+							<p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempoinc ididunt ut magna aliqua dolor sit amet, consectetur adipiscing elit magna”</p>
+						</div>
+						<div class="feedback-item-top">
+							<img src="assets/img/feedback-photo-3.png" alt="photo">
+							<div class="feedback-title">
+								<h5 class="title"><span>Zoe Tyler</span></h5>
+								<ul class="rating">
+									<li class="star-bg"><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li class="star-bg"><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li class="star-bg"><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li class="star-bg"><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li class="star-not-bg"><i class="fa fa-star-o" aria-hidden="true"></i></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="feedback-slide">
+					<div class="feedback-item">
+						<div class="feedback-content">
+							<p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempoinc ididunt ut magna aliqua dolor sit amet, consectetur adipiscing elit magna”</p>
+						</div>
+						<div class="feedback-item-top">
+							<img src="assets/img/feedback-photo-2.png" alt="photo">
+							<div class="feedback-title">
+								<h5 class="title"><span>Sam Barton</span></h5>
+								<ul class="rating">
+									<li class="star-bg"><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li class="star-bg"><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li class="star-bg"><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li class="star-bg"><i class="fa fa-star" aria-hidden="true"></i></li>
+									<li class="star-not-bg"><i class="fa fa-star-o" aria-hidden="true"></i></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+<!--================ S-FEEDBACK END ================-->
+
 {% endblock %}
 
 
