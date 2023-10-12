@@ -24,7 +24,7 @@
                         {% for bicycle in bicycles|slice:":1" %}
 						<a href="single-shop.html" class="lable-bike">
 							<div class="lable-bike-img">
-                                <img src="{% static 'img/bike-info-slide-e-bike.jpg' %}" alt="img">
+                                <img src="{{ bicycle.bicycle_type_image.url }}" alt="img">
                             </div>
 							<div class="lable-bike-item">
 								<div class="model">{{ bicycle.bicycle_name }}</div>
@@ -37,82 +37,98 @@
 				</div>
 			</div>
 			<div class="main-slide">
-				<div class="main-slide-bg" style="background-image: url(assets/img/bg-slider-2.svg);"></div>
+				<div class="main-slide-bg" style="background-image: url(static/img/bg-slider-2.svg);"></div>
 				<div class="container">
 					<div class="main-slide-info">
 						<h2 class="title">best bikes for you</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore consectetur sint iure id expedita saepe.</p>
+						<p>Select from our best choices!</p>
 						<a href="single-shop.html" class="btn"><span>buy now</span></a>
 					</div>
 					<div class="slide-img-cover">
+						{% for bicycle in bicycles|slice:"1:2" %}
 						<a href="single-shop.html" class="lable-bike">
-							<div class="lable-bike-img"><img src="assets/img/bike-info-slide.jpg" alt="img"></div>
+							<div class="lable-bike-img">
+                                <img src="{{ bicycle.bicycle_type_image.url }}" alt="img">
+                            </div>
 							<div class="lable-bike-item">
-								<div class="model">model M-300</div>
-								<div class="price">$1199</div>
+								<div class="model">{{ bicycle.bicycle_name }}</div>
+								<div class="price">${{ bicycle.bicycle_price }}</div>
 							</div>
 						</a>
-						<img src="assets/img/img-slider-2.png" alt="img" class="slide-img">
+						<img src="{{ bicycle.bicycle_image.url }}" alt="img" class="slide-img">
+                        {% endfor %}
 					</div>
 				</div>
 			</div>
 			<div class="main-slide">
-				<div class="main-slide-bg" style="background-image: url(assets/img/bg-slider-3.svg);"></div>
+				<div class="main-slide-bg" style="background-image: url(static/img/bg-slider-3.svg);"></div>
 				<div class="container">
 					<div class="main-slide-info">
 						<h2 class="title">best bikes for you</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis distinctio tenetur ab ut! Qui, facilis.</p>
+						<p>Select from our best choices!</p>
 						<a href="single-shop.html" class="btn"><span>buy now</span></a>
 					</div>
 					<div class="slide-img-cover">
+						{% for bicycle in bicycles|slice:"2:3" %}
 						<a href="single-shop.html" class="lable-bike">
-							<div class="lable-bike-img"><img src="assets/img/bike-info-slide.jpg" alt="img"></div>
+							<div class="lable-bike-img">
+                                <img src="{{ bicycle.bicycle_type_image.url }}" alt="img">
+                            </div>
 							<div class="lable-bike-item">
-								<div class="model">model X-230</div>
-								<div class="price">$1099</div>
+								<div class="model">{{ bicycle.bicycle_name }}</div>
+								<div class="price">${{ bicycle.bicycle_price }}</div>
 							</div>
 						</a>
-						<img src="assets/img/img-slider-3.png" alt="img" class="slide-img">
+						<img src="{{ bicycle.bicycle_image.url }}" alt="img" class="slide-img">
+                        {% endfor %}
 					</div>
 				</div>
 			</div>
 			<div class="main-slide">
-				<div class="main-slide-bg" style="background-image: url(assets/img/bg-slider.svg);"></div>
+				<div class="main-slide-bg" style="background-image: url(static/img/bg-slider.svg);"></div>
 				<div class="container">
 					<div class="main-slide-info">
 						<h2 class="title">best bikes for you</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+						<p>Select from our best choices!</p>
 						<a href="single-shop.html" class="btn"><span>buy now</span></a>
 					</div>
 					<div class="slide-img-cover">
+						{% for bicycle in bicycles|slice:"3:4" %}
 						<a href="single-shop.html" class="lable-bike">
-							<div class="lable-bike-img"><img src="assets/img/bike-info-slide.jpg" alt="img"></div>
+							<div class="lable-bike-img">
+                                <img src="{{ bicycle.bicycle_type_image.url }}" alt="img">
+                            </div>
 							<div class="lable-bike-item">
-								<div class="model">model SX-200</div>
-								<div class="price">$1399</div>
+								<div class="model">{{ bicycle.bicycle_name }}</div>
+								<div class="price">${{ bicycle.bicycle_price }}</div>
 							</div>
 						</a>
-						<img src="assets/img/img-slider.png" alt="img" class="slide-img">
+						<img src="{{ bicycle.bicycle_image.url }}" alt="img" class="slide-img">
+                        {% endfor %}
 					</div>
 				</div>
 			</div>
 			<div class="main-slide">
-				<div class="main-slide-bg" style="background-image: url(assets/img/bg-slider-2.svg);"></div>
+				<div class="main-slide-bg" style="background-image: url(static/img/bg-slider-2.svg);"></div>
 				<div class="container">
 					<div class="main-slide-info">
 						<h2 class="title">best bikes for you</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore consectetur sint iure id expedita saepe.</p>
+						<p>Select from our best choices!</p>
 						<a href="single-shop.html" class="btn"><span>buy now</span></a>
 					</div>
 					<div class="slide-img-cover">
+						{% for bicycle in bicycles|slice:"4:5" %}
 						<a href="single-shop.html" class="lable-bike">
-							<div class="lable-bike-img"><img src="assets/img/bike-info-slide.jpg" alt="img"></div>
+							<div class="lable-bike-img">
+                                <img src="{{ bicycle.bicycle_type_image.url }}" alt="img">
+                            </div>
 							<div class="lable-bike-item">
-								<div class="model">model M-300</div>
-								<div class="price">$1199</div>
+								<div class="model">{{ bicycle.bicycle_name }}</div>
+								<div class="price">${{ bicycle.bicycle_price }}</div>
 							</div>
 						</a>
-						<img src="assets/img/img-slider-2.png" alt="img" class="slide-img">
+						<img src="{{ bicycle.bicycle_image.url }}" alt="img" class="slide-img">
+                        {% endfor %}
 					</div>
 				</div>
 			</div>
@@ -137,12 +153,15 @@
 						</select>
 					</li>
 					<li>
-						<label>Class</label>
+						<label>Price</label>
 						<select class="nice-select">
-							<option selected="selected">Select bicycle class</option>
-							{% for class in bicycle_classes %}
-							<option>{{ class }}</option>
-							{% endfor %}
+							<option selected="selected">Select bicycle price</option>
+							<option>$0-999</option>
+							<option>$1000-1999</option>
+							<option>$2000-2999</option>
+							<option>$3000-3999</option>
+							<option>$4000-4999</option>
+							<option>$5000+</option>
 						</select>
 					</li>
 					<li>
@@ -162,43 +181,43 @@
 <!--============== S-FIND-BIKE END ==============-->
 
 
-<!--============== S-CATEGORY-BICYKLE ==============-->
+<!--============== S-CATEGORY ==============-->
 <section class="s-category-bicycle">
 		<div class="container">
 			<div class="slider-categ-bicycle">
 				<div class="slide-categ-bicycle">
 					<div class="categ-bicycle-item">
-						<img src="assets/img/categ-2.png" alt="category">
+						<img src="{% static 'img/main-category-e-bikes.jpg' %}" alt="category">
 						<div class="categ-bicycle-info">
-							<h4 class="title">mountain <br>& road bikes</h4>
-							<a href="shop.html" class="btn"><span>view more</span></a>
+							<h4 class="title">E-bikes</h4>
+							<a href="#" class="btn"><span>view more</span></a>
 						</div>
 					</div>
 				</div>
 				<div class="slide-categ-bicycle">
 					<div class="categ-bicycle-item">
-						<img src="assets/img/categ-3.png" alt="category">
+						<img src="{% static 'img/main-category-spare-parts.jpg' %}" alt="category">
 						<div class="categ-bicycle-info">
 							<h4 class="title">bicycle <br>spare parts</h4>
-							<a href="shop.html" class="btn"><span>view more</span></a>
+							<a href="#" class="btn"><span>view more</span></a>
 						</div>
 					</div>
 				</div>
 				<div class="slide-categ-bicycle">
 					<div class="categ-bicycle-item">
-						<img src="assets/img/categ-1.png" alt="category">
+						<img src="{% static 'img/main-category-accessories.jpg' %}" alt="category">
 						<div class="categ-bicycle-info">
-							<h4 class="title">accessories <br>& clothing</h4>
-							<a href="shop.html" class="btn"><span>view more</span></a>
+							<h4 class="title">accessories</h4>
+							<a href="#" class="btn"><span>view more</span></a>
 						</div>
 					</div>
 				</div>
 				<div class="slide-categ-bicycle">
 					<div class="categ-bicycle-item">
-						<img src="assets/img/categ-3.png" alt="category">
+						<img src="{% static 'img/main-category-clothing.jpg' %}" alt="category">
 						<div class="categ-bicycle-info">
-							<h4 class="title">bicycle <br>spare parts</h4>
-							<a href="shop.html" class="btn"><span>view more</span></a>
+							<h4 class="title">clothing</h4>
+							<a href="#" class="btn"><span>view more</span></a>
 						</div>
 					</div>
 				</div>

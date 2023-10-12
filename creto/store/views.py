@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import ProductBicycle
+from .models import *
 
 
 def index(request):
@@ -21,3 +21,18 @@ def contacts(request):
 
 def news(request):
     return render(request, 'store/news.html')
+
+
+def shop(request):
+    bicycles = ProductBicycle.object.all()
+    accessories = ProductAccessory.object.all()
+    clothes = ProductClothes.object.all()
+    spare_parts = ProductSparePart.object.all()
+    context = {
+        'bicycles': bicycles,
+        'accessories': accessories,
+        'clothes': clothes,
+        'spare_parts': spare_parts
+    }
+
+    return render(request, 'store/shop.html', context)
