@@ -38,12 +38,12 @@
             <nav class="nav-menu">
                 <ul class="nav-list">
                     <li class="dropdown">
-                        <a href="#">Shop <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                        <a href="{% url 'shop-all' %}">Shop <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                         <ul>
-                            <li class="active"><a href="#">Bicycles</a></li>
-                            <li><a href="#">Accessories</a></li>
-                            <li><a href="#">Spare parts</a></li>
-                            <li><a href="#">Clothing</a></li>
+                            <li><a href="{% url 'shop-bicycles' %}">Bicycles</a></li>
+                            <li><a href="{% url 'shop-accessories' %}">Accessories</a></li>
+                            <li><a href="{% url 'shop-spare-parts' %}">Spare parts</a></li>
+                            <li><a href="{% url 'shop-clothes' %}">Clothes</a></li>
                         </ul>
                     </li>
                     <li><a href="{% url 'news' %}">News</a></li>

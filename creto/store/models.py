@@ -28,7 +28,7 @@ class ProductAccessory(models.Model):
     accessory_size = models.CharField(max_length=300, null=True, blank=True)
 
     def __str__(self):
-        return self.bicycle_name
+        return self.accessory_name
 
 
 class ProductClothes(models.Model):
@@ -40,6 +40,9 @@ class ProductClothes(models.Model):
     clothes_size = models.CharField(max_length=300, null=True, blank=True)
     clothes_sex = models.CharField(max_length=300, null=True, blank=True)
 
+    def __str__(self):
+        return self.clothes_name
+
 
 class ProductSparePart(models.Model):
     spare_part_image = models.ImageField(null=True, blank=True, upload_to='store/products/spare_parts/%Y/%m/%d/')
@@ -47,3 +50,6 @@ class ProductSparePart(models.Model):
     spare_part_price = models.IntegerField()
     spare_part_name = models.CharField(max_length=300, null=True, blank=True)
     spare_part_brand = models.CharField(max_length=300, null=True, blank=True)
+
+    def __str__(self):
+        return self.spare_part_name

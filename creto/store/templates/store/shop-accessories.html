@@ -22,7 +22,7 @@
                 <ul class="widgets wigets-shop">
                     <li class="widget wiget-shop-category">
                         <h5 class="title">Categories</h5>
-                        <ul>
+                         <ul>
                             <li><a href="{% url 'shop-bicycles' %}">Bicycles</a></li>
                             <li><a href="{% url 'shop-accessories' %}">Accessories</a></li>
                             <li><a href="{% url 'shop-spare-parts' %}">Spare parts</a></li>
@@ -108,43 +108,36 @@
                 </div>
                 <div class="shop-product-cover">
                     <div class="row product-cover block">
-                        {% for bicycle in bicycles %}
+                        {% for accessory in accessories %}
                         <div class="col-12 col-sm-4 prod-item-col">
                             <div class="product-item">
                                 <ul class="product-icon-top">
                                     <li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a></li>
                                 </ul>
-                                <a href="#" class="product-img"><img src="{{ bicycle.bicycle_image.url }}" alt="product"></a>
+                                <a href="#" class="product-img"><img src="{{ accessory.accessory_image.url }}" alt="product"></a>
                                 <div class="product-item-wrap">
                                     <div class="product-item-cover">
                                         <div class="price-cover">
-                                            <div class="new-price">${{ bicycle.bicycle_price }}</div>
+                                            <div class="new-price">${{ accessory.accessory_price }}</div>
                                         </div>
                                         <h6 class="prod-title">
                                             <a href="single-shop.html">
-                                                {{ bicycle.bicycle_name }}
-                                                <br> {{ bicycle.bicycle_type }} bike
+                                                {{ accessory.accessory_name }}
+                                                <br> {{ accessory.accessory_type }}
                                             </a>
                                         </h6>
-                                        <a href="single-shop.html"
-                                           class="btn"><span>buy now</span></a>
+                                        <a href="single-shop.html" class="btn"><span>buy now</span></a>
                                     </div>
                                     <div class="prod-info">
                                         <ul class="prod-list">
                                             <li>Brand:
-                                                <span>{{ bicycle.bicycle_brand }}</span>
+                                                <span>{{ accessory.accessory_brand }}</span>
                                             </li>
                                             <li>Type:
-                                                <span>{{ bicycle.bicycle_type }}</span>
+                                                <span>{{ accessory.accessory_type }}</span>
                                             </li>
-                                            <li>Frame Size:
-                                                <span>{{ bicycle.bicycle_frame_size }}</span>
-                                            </li>
-                                            <li>Number of speeds:
-                                                <span>{{ bicycle.bicycle_number_of_speeds }}</span>
-                                            </li>
-                                            <li>Manufactured:
-                                                <span>{{ bicycle.bicycle_manufacturer_country}}</span>
+                                            <li>Size:
+                                                <span>{{ accessory.accessory_size }}</span>
                                             </li>
                                         </ul>
                                     </div>
