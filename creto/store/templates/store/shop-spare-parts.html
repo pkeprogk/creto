@@ -90,9 +90,10 @@
                 <a href="#" class="reset-filter-btn">Reset Filters</a>
             </div>
             <div class="col-12 col-lg-9 shop-cover">
-                <h2 class="title">Bicycles</h2>
+                <h2 class="title">Bicycle Spare Parts</h2>
                 <div class="shop-sort-cover">
-                    <div class="sort-left">{{ bicycles|length }} items found</div>
+                    <div class="sort-left">{{ spare_parts|length }}
+                        items found</div>
                     <div class="sort-right">
                         <div class="sort-by">
                             <span class="sort-name">sort by:</span>
@@ -108,22 +109,22 @@
                 </div>
                 <div class="shop-product-cover">
                     <div class="row product-cover block">
-                        {% for bicycle in bicycles %}
+                        {% for spare_part in spare_parts %}
                         <div class="col-12 col-sm-4 prod-item-col">
                             <div class="product-item">
                                 <ul class="product-icon-top">
                                     <li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a></li>
                                 </ul>
-                                <a href="#" class="product-img"><img src="{{ bicycle.bicycle_image.url }}" alt="product"></a>
+                                <a href="#" class="product-img"><img src="{{ spare_part.spare_part_image.url }}" alt="product"></a>
                                 <div class="product-item-wrap">
                                     <div class="product-item-cover">
                                         <div class="price-cover">
-                                            <div class="new-price">${{ bicycle.bicycle_price }}</div>
+                                            <div class="new-price">${{ spare_part.spare_part_price }}</div>
                                         </div>
                                         <h6 class="prod-title">
                                             <a href="single-shop.html">
-                                                {{ bicycle.bicycle_name }}
-                                                <br> {{ bicycle.bicycle_type }} bike
+                                                {{ spare_part.spare_part_name }}
+                                                <br> {{ spare_part.spare_part_type }} bike
                                             </a>
                                         </h6>
                                         <a href="single-shop.html"
@@ -132,19 +133,10 @@
                                     <div class="prod-info">
                                         <ul class="prod-list">
                                             <li>Brand:
-                                                <span>{{ bicycle.bicycle_brand }}</span>
+                                                <span>{{ spare_part.spare_part_brand }}</span>
                                             </li>
                                             <li>Type:
-                                                <span>{{ bicycle.bicycle_type }}</span>
-                                            </li>
-                                            <li>Frame Size:
-                                                <span>{{ bicycle.bicycle_frame_size }}</span>
-                                            </li>
-                                            <li>Number of speeds:
-                                                <span>{{ bicycle.bicycle_number_of_speeds }}</span>
-                                            </li>
-                                            <li>Manufactured:
-                                                <span>{{ bicycle.bicycle_manufacturer_country}}</span>
+                                                <span>{{ spare_part.spare_part_type }}</span>
                                             </li>
                                         </ul>
                                     </div>

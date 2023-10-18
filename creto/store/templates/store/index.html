@@ -13,22 +13,23 @@
 		</ul>
 		<div class="main-slider">
 			<div class="main-slide">
+				{% for bicycle in bicycles|slice:":1" %}
 				<div class="main-slide-bg" style="background-image: url(static/img/bg-slider.svg);"></div>
 				<div class="container">
 					<div class="main-slide-info">
 						<h2 class="title">best bikes for you</h2>
 						<p>Select from our best choices!</p>
-						<a href="#" class="btn"><span>buy now</span></a>
+						<a href="{% url 'single-bicycle' bicycle.id %}" class="btn"><span>buy
+							now</span></a>
 					</div>
 					<div class="slide-img-cover">
-                        {% for bicycle in bicycles|slice:":1" %}
-						<a href="single-shop.html" class="lable-bike">
+						<a href="{% url 'single-bicycle' bicycle.id %}" class="lable-bike">
 							<div class="lable-bike-img">
                                 <img src="{{ bicycle.bicycle_type_image.url }}" alt="img">
                             </div>
 							<div class="lable-bike-item">
 								<div class="model">{{ bicycle.bicycle_name }}</div>
-								<div class="price">${{ bicycle.bicycle_price }}</div>
+								<div class="price">${{ bicycle.bicycle_price_new }}</div>
 							</div>
 						</a>
 						<img src="{{ bicycle.bicycle_image.url }}" alt="img" class="slide-img">
@@ -37,22 +38,22 @@
 				</div>
 			</div>
 			<div class="main-slide">
+				{% for bicycle in bicycles|slice:"1:2" %}
 				<div class="main-slide-bg" style="background-image: url(static/img/bg-slider-2.svg);"></div>
 				<div class="container">
 					<div class="main-slide-info">
 						<h2 class="title">best bikes for you</h2>
 						<p>Select from our best choices!</p>
-						<a href="single-shop.html" class="btn"><span>buy now</span></a>
+						<a href="{% url 'single-bicycle' bicycle.id %}" class="btn"><span>buy now</span></a>
 					</div>
 					<div class="slide-img-cover">
-						{% for bicycle in bicycles|slice:"1:2" %}
-						<a href="single-shop.html" class="lable-bike">
+						<a href="{% url 'single-bicycle' bicycle.id %}" class="lable-bike">
 							<div class="lable-bike-img">
                                 <img src="{{ bicycle.bicycle_type_image.url }}" alt="img">
                             </div>
 							<div class="lable-bike-item">
 								<div class="model">{{ bicycle.bicycle_name }}</div>
-								<div class="price">${{ bicycle.bicycle_price }}</div>
+								<div class="price">${{ bicycle.bicycle_price_new }}</div>
 							</div>
 						</a>
 						<img src="{{ bicycle.bicycle_image.url }}" alt="img" class="slide-img">
@@ -61,22 +62,22 @@
 				</div>
 			</div>
 			<div class="main-slide">
+				{% for bicycle in bicycles|slice:"2:3" %}
 				<div class="main-slide-bg" style="background-image: url(static/img/bg-slider-3.svg);"></div>
 				<div class="container">
 					<div class="main-slide-info">
 						<h2 class="title">best bikes for you</h2>
 						<p>Select from our best choices!</p>
-						<a href="single-shop.html" class="btn"><span>buy now</span></a>
+						<a href="{% url 'single-bicycle' bicycle.id %}" class="btn"><span>buy now</span></a>
 					</div>
 					<div class="slide-img-cover">
-						{% for bicycle in bicycles|slice:"2:3" %}
-						<a href="single-shop.html" class="lable-bike">
+						<a href="{% url 'single-bicycle' bicycle.id %}" class="lable-bike">
 							<div class="lable-bike-img">
                                 <img src="{{ bicycle.bicycle_type_image.url }}" alt="img">
                             </div>
 							<div class="lable-bike-item">
 								<div class="model">{{ bicycle.bicycle_name }}</div>
-								<div class="price">${{ bicycle.bicycle_price }}</div>
+								<div class="price">${{ bicycle.bicycle_price_new }}</div>
 							</div>
 						</a>
 						<img src="{{ bicycle.bicycle_image.url }}" alt="img" class="slide-img">
@@ -85,22 +86,22 @@
 				</div>
 			</div>
 			<div class="main-slide">
+				{% for bicycle in bicycles|slice:"3:4" %}
 				<div class="main-slide-bg" style="background-image: url(static/img/bg-slider.svg);"></div>
 				<div class="container">
 					<div class="main-slide-info">
 						<h2 class="title">best bikes for you</h2>
 						<p>Select from our best choices!</p>
-						<a href="single-shop.html" class="btn"><span>buy now</span></a>
+						<a href="{% url 'single-bicycle' bicycle.id %}" class="btn"><span>buy now</span></a>
 					</div>
 					<div class="slide-img-cover">
-						{% for bicycle in bicycles|slice:"3:4" %}
-						<a href="single-shop.html" class="lable-bike">
+						<a href="{% url 'single-bicycle' bicycle.id %}" class="lable-bike">
 							<div class="lable-bike-img">
                                 <img src="{{ bicycle.bicycle_type_image.url }}" alt="img">
                             </div>
 							<div class="lable-bike-item">
 								<div class="model">{{ bicycle.bicycle_name }}</div>
-								<div class="price">${{ bicycle.bicycle_price }}</div>
+								<div class="price">${{ bicycle.bicycle_price_new }}</div>
 							</div>
 						</a>
 						<img src="{{ bicycle.bicycle_image.url }}" alt="img" class="slide-img">
@@ -109,22 +110,22 @@
 				</div>
 			</div>
 			<div class="main-slide">
+				{% for bicycle in bicycles|slice:"4:5" %}
 				<div class="main-slide-bg" style="background-image: url(static/img/bg-slider-2.svg);"></div>
 				<div class="container">
 					<div class="main-slide-info">
 						<h2 class="title">best bikes for you</h2>
 						<p>Select from our best choices!</p>
-						<a href="single-shop.html" class="btn"><span>buy now</span></a>
+						<a href="{% url 'single-bicycle' bicycle.id %}" class="btn"><span>buy now</span></a>
 					</div>
 					<div class="slide-img-cover">
-						{% for bicycle in bicycles|slice:"4:5" %}
-						<a href="single-shop.html" class="lable-bike">
+						<a href="{% url 'single-bicycle' bicycle.id %}" class="lable-bike">
 							<div class="lable-bike-img">
                                 <img src="{{ bicycle.bicycle_type_image.url }}" alt="img">
                             </div>
 							<div class="lable-bike-item">
 								<div class="model">{{ bicycle.bicycle_name }}</div>
-								<div class="price">${{ bicycle.bicycle_price }}</div>
+								<div class="price">${{ bicycle.bicycle_price_new }}</div>
 							</div>
 						</a>
 						<img src="{{ bicycle.bicycle_image.url }}" alt="img" class="slide-img">
@@ -198,7 +199,7 @@
 					<div class="categ-bicycle-item">
 						<img src="{% static 'img/main-category-spare-parts.jpg' %}" alt="category">
 						<div class="categ-bicycle-info">
-							<h4 class="title">bicycle <br>spare parts</h4>
+							<h4 class="title">spare parts</h4>
 							<a href="#" class="btn"><span>view more</span></a>
 						</div>
 					</div>

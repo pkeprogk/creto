@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import *
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
 def index(request):
@@ -39,15 +40,34 @@ def shop(request):
 
 
 def shop_bicycles(request):
+    page = request.GET.get('page')
+    results = 6
     bicycles = ProductBicycle.objects.all()
     bicycle_types = ProductBicycle.objects.values_list('bicycle_type', flat=True).distinct()
-    bicycle_prices = ProductBicycle.objects.values_list('bicycle_price', flat=True).distinct()
     bicycle_brands = ProductBicycle.objects.values_list('bicycle_brand', flat=True).distinct()
+    paginator = Paginator(bicycles, results)
+    try:
+        bicycles = paginator.page(page)
+    except PageNotAnInteger:
+        page = 1
+        bicycles = paginator.page(page)
+    except EmptyPage:
+        page = paginator.num_pages
+        bicycles = paginator.page(page)
+
+    page = int(page)
+    left_index = page - 3 if page > 3 else 1
+
+    right_index = page + 4 if page < paginator.num_pages - 3 else paginator.num_pages + 1
+
+    custom_range = range(left_index, right_index)
+
     context = {
         'bicycles': bicycles,
         'bicycle_types': bicycle_types,
-        'bicycle_prices': bicycle_prices,
-        'bicycle_brands': bicycle_brands
+        'bicycle_brands': bicycle_brands,
+        'paginator': paginator,
+        'custom_range': custom_range
     }
 
     return render(request, 'store/shop-bicycles.html', context)
@@ -70,14 +90,14 @@ def shop_accessories(request):
 
 def shop_spare_parts(request):
     spare_parts = ProductSparePart.objects.all()
-    spare_parts_types = ProductSparePart.objects.values_list('spare_parts_type', flat=True).distinct()
-    spare_parts_prices = ProductSparePart.objects.values_list('spare_parts_price', flat=True).distinct()
-    spare_parts_brands = ProductSparePart.objects.values_list('spare_parts_brand', flat=True).distinct()
+    spare_parts_types = ProductSparePart.objects.values_list('spare_part_type', flat=True).distinct()
+    spare_parts_prices = ProductSparePart.objects.values_list('spare_part_price', flat=True).distinct()
+    spare_parts_brands = ProductSparePart.objects.values_list('spare_part_brand', flat=True).distinct()
     context = {
         'spare_parts': spare_parts,
-        'accessories_types': spare_parts_types,
-        'accessories_prices': spare_parts_prices,
-        'accessories_brands': spare_parts_brands
+        'spare_parts_types': spare_parts_types,
+        'spare_parts_prices': spare_parts_prices,
+        'spare_parts_brands': spare_parts_brands
     }
 
     return render(request, 'store/shop-spare-parts.html', context)
@@ -98,3 +118,13 @@ def shop_clothes(request):
     }
 
     return render(request, 'store/shop-clothes.html', context)
+
+
+def single_bicycle(request, pk):
+    bicycle = ProductBicycle.objects.get(pk=pk)
+
+    context = {
+        'bicycle': bicycle
+    }
+
+    return render(request, 'store/single-bicycle.html', context)

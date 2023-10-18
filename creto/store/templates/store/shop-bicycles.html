@@ -30,18 +30,23 @@
                         </ul>
                     </li>
                     <li class="widget wiget-shop-category">
-                        <h5 class="title">bikes</h5>
+                        <h5 class="title">type</h5>
                         <ul>
-                            <li><p><input type="checkbox" checked><span>Road Bike</span>
-                            </p></li>
-                            <li><p><input type="checkbox"><span>Mountain Bike</span>
-                            </p></li>
-                            <li><p><input type="checkbox"><span>BMX Bike</span>
-                            </p></li>
-                            <li><p><input type="checkbox"><span>City Bike</span>
-                            </p></li>
-                            <li><p><input type="checkbox"><span>Kids Bike</span>
-                            </p></li>
+                            {% for type in bicycle_types %}
+                            <li>
+                                <p><input type="checkbox"><span>{{ type }}</span></p>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li class="widget wiget-brand">
+                        <h5 class="title">brand</h5>
+                        <ul>
+                            {% for brand in bicycle_brands %}
+                            <li>
+                                <p><input type="checkbox"><span>{{ brand }}</span></p>
+                            </li>
+                            {% endfor %}
                         </ul>
                     </li>
                     <li class="widget wiget-price">
@@ -52,39 +57,6 @@
                             <span>&mdash;</span>
                             <input type="text" id="amount-max">
                         </div>
-                    </li>
-                    <li class="widget wiget-gender">
-                        <h5 class="title">gender</h5>
-                        <ul>
-                            <li><p><input
-                                    type="checkbox"><span>Men’s</span>
-                            </p></li>
-                            <li><p><input type="checkbox"><span>Women’s</span>
-                            </p></li>
-                            <li><p><input
-                                    type="checkbox"><span>Kids</span>
-                            </p></li>
-                        </ul>
-                    </li>
-                    <li class="widget wiget-brand">
-                        <h5 class="title">brand</h5>
-                        <ul>
-                            <li><p><input
-                                    type="checkbox"><span>Focus</span>
-                            </p></li>
-                            <li><p><input
-                                    type="checkbox"><span>Radon</span>
-                            </p></li>
-                            <li><p><input
-                                    type="checkbox"><span>Cube</span>
-                            </p></li>
-                            <li><p><input
-                                    type="checkbox"><span>Bikes</span>
-                            </p></li>
-                            <li><p><input
-                                    type="checkbox"><span>Cruzee</span>
-                            </p></li>
-                        </ul>
                     </li>
                 </ul>
                 <a href="#" class="reset-filter-btn">Reset Filters</a>
@@ -111,14 +83,22 @@
                         {% for bicycle in bicycles %}
                         <div class="col-12 col-sm-4 prod-item-col">
                             <div class="product-item">
+                                {% if bicycle.bicycle_price_new != bicycle.bicycle_price_old %}
+                                    <span class="sale">SALE</span>
+                                {% endif %}
                                 <ul class="product-icon-top">
                                     <li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a></li>
                                 </ul>
-                                <a href="#" class="product-img"><img src="{{ bicycle.bicycle_image.url }}" alt="product"></a>
+                                <a href="{% url 'single-bicycle' bicycle.id %}" class="product-img"><img src="{{ bicycle.bicycle_image.url }}" alt="product"></a>
                                 <div class="product-item-wrap">
                                     <div class="product-item-cover">
                                         <div class="price-cover">
-                                            <div class="new-price">${{ bicycle.bicycle_price }}</div>
+                                            {% if bicycle.bicycle_price_new == bicycle.bicycle_price_old %}
+						                        <div class="new-price">${{ bicycle.bicycle_price_new }}</div>
+						                    {% else %}
+						                        <div class="new-price">${{ bicycle.bicycle_price_new }}</div>
+                                                <div class="old-price">${{ bicycle.bicycle_price_old }}</div>
+						                    {% endif %}
                                         </div>
                                         <h6 class="prod-title">
                                             <a href="single-shop.html">
@@ -126,8 +106,7 @@
                                                 <br> {{ bicycle.bicycle_type }} bike
                                             </a>
                                         </h6>
-                                        <a href="single-shop.html"
-                                           class="btn"><span>buy now</span></a>
+                                        <a href="{% url 'single-bicycle' bicycle.id %}" class="btn"><span>buy now</span></a>
                                     </div>
                                     <div class="prod-info">
                                         <ul class="prod-list">
@@ -137,8 +116,15 @@
                                             <li>Type:
                                                 <span>{{ bicycle.bicycle_type }}</span>
                                             </li>
-                                            <li>Frame Size:
-                                                <span>{{ bicycle.bicycle_frame_size }}</span>
+                                            <li>Frame Size Available:
+                                                {% for frame_size in bicycle.bicycle_frame_sizes.all %}
+							                        <span>{{ frame_size }}</span>
+							                    {% endfor %}
+                                            </li>
+                                            <li>Wheel Size Available:
+                                                {% for wheel_size in bicycle.bicycle_wheel_sizes.all %}
+							                        <span>{{ wheel_size }}</span>
+							                    {% endfor %}
                                             </li>
                                             <li>Number of speeds:
                                                 <span>{{ bicycle.bicycle_number_of_speeds }}</span>
@@ -153,28 +139,33 @@
                         </div>
                         {% endfor %}
                     </div>
+                    {% if bicycles.has_other_pages %}
                     <div class="pagination-cover">
                         <ul class="pagination">
-                            <li class="pagination-item item-prev"><a
-                                    href="#"><i
-                                    class="fa fa-angle-left"
-                                    aria-hidden="true"></i></a></li>
-                            <li class="pagination-item active"><a
-                                    href="#">1</a></li>
-                            <li class="pagination-item"><a
-                                    href="#">2</a></li>
-                            <li class="pagination-item"><a
-                                    href="#">3</a></li>
-                            <li class="pagination-item"><a
-                                    href="#">4</a></li>
-                            <li class="pagination-item"><a
-                                    href="#">5</a></li>
-                            <li class="pagination-item item-next"><a
-                                    href="#"><i
-                                    class="fa fa-angle-right"
-                                    aria-hidden="true"></i></a></li>
+                            {% if bicycles.has_previous %}
+                            <li class="pagination-item item-prev">
+                                <a href="?page={{ bicycles.previous_page_number }}">
+                                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% for page in custom_range %}
+                                {% if page == bicycles.number %}
+                                    <li class="pagination-item active"><a href="?page={{ page }}">{{ page }}</a></li>
+                                {% else %}
+                                    <li class="pagination-item"><a href="?page={{ page }}">{{ page }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                            {% if bicycles.has_next %}
+                            <li class="pagination-item item-next">
+                                <a href="?page={{ bicycles.next_page_number }}">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            {% endif %}
                         </ul>
                     </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
