@@ -1,0 +1,16 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- ================ HEADER-TITLE ================ -->
+<section class="s-header-title">
+    <div class="container">
+        <h1>{{ user.username }}</h1>
+        <ul class="breadcrambs">
+            <li><a href="{% url 'main-page' %}">HOME</a></li>
+        </ul>
+    </div>
+</section>
+<!-- ============== HEADER-TITLE END ============== -->
+
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% block content %}
+
+{% if page == 'register' %}
+
+<!-- ================ HEADER-TITLE ================ -->
+<section class="s-header-title">
+    <div class="container">
+        <h1>Registration</h1>
+        <ul class="breadcrambs">
+            <li><a href="{% url 'main-page' %}">HOME</a></li>
+        </ul>
+    </div>
+</section>
+<!-- ============== HEADER-TITLE END ============== -->
+
+    <div class="container ctr-registration">
+        <h2 class="title title-registration"><span>Create a new customer account</span></h2>
+        <form action="{% url 'register' %}" method="post" class="form auth__form">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form__field">
+                    <label>{{ field.label }}:</label>
+                        {{ field }}
+                </div>
+                {% for error in field.errors %}
+                    <p style="color: red;">{{ error }}</p>
+                {% endfor %}
+            {% endfor %}
+            <div class="auth__actions auth-registration">
+                <input style="" class="btn btn-form btn-registration" type="submit" value="Sign In"/>
+            </div>
+            <h2 class="title title-reg-log-in">
+                <span>Already have an account?</span>
+            </h2>
+            <div class="auth-registration">
+                <a href="{% url 'login' %}" class="btn btn-form btn-log-in" type="submit">
+                    <span>Log In</span>
+                </a>
+            </div>
+        </form>
+    </div>
+{% else %}
+
+<!-- ================ HEADER-TITLE ================ -->
+<section class="s-header-title">
+    <div class="container">
+        <h1>Account Login</h1>
+        <ul class="breadcrambs">
+            <li><a href="{% url 'main-page' %}">HOME</a></li>
+        </ul>
+    </div>
+</section>
+<!-- ============== HEADER-TITLE END ============== -->
+
+<div class="container ctr-registration">
+        <h2 class="title title-registration"><span>Log in into Your account</span></h2>
+        <form action="{% url 'login' %}" method="post" class="form auth__form">
+            {% csrf_token %}
+            <div class="form__field">
+                <label for="formInput#text">Username: </label>
+                <input class="input input--text" id="formInput#text" type="text" name="username"
+                        placeholder="Enter your username..."/>
+            </div>
+            <!-- Input:Password -->
+            <div class="form__field">
+                <label for="formInput#password">Password: </label>
+                <input class="input input--password" id="formInput#passowrd" type="password"
+                        name="password" placeholder="••••••••"/>
+            </div>
+            <div class="auth__actions auth-registration">
+                <input class="btn btn--sub btn--lg btn-registration" type="submit" value="Log In"/>
+                <a href="#">Forget Password?</a>
+            </div>
+        </form>
+        <div class="auth-registration">
+            <h2 class="title title-registration"><span>Don’t have an Account?</span></h2>
+            <a href="{% url 'register' %}" class="btn btn-form btn-log-in" type="submit">
+                    <span>Sign Up</span>
+            </a>
+        </div>
+</div>
+
+{% endif %}
+{% endblock %}
+
