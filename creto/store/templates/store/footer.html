@@ -15,13 +15,10 @@
 				<div class="footer-item col-md-5 col-lg-4">
 					<h6>info</h6>
 					<ul class="footer-list">
-						<li><a href="#">FAQ</a></li>
+						<li><a href="{% url 'contacts' %}">FAQ</a></li>
 						<li><a href="{% url 'contacts' %}">Contacts</a></li>
-						<li><a href="{% url 'news' %}">News</a></li>
-						<li><a href="#">Exchanges</a></li>
-						<li><a href="#">2019 Catalog</a></li>
-						<li><a href="#">Returns</a></li>
-						<li><a href="#">Search</a></li>
+						<li><a href="{% url 'contacts' %}">Exchanges</a></li>
+						<li><a href="{% url 'contacts' %}">Returns</a></li>
 					</ul>
 				</div>
 			</div>
@@ -40,9 +37,9 @@
 					<h6>shop</h6>
 					<ul class="footer-list">
 						<li><a href="{% url 'shop-bicycles' %}">Bicycles</a></li>
-						<li><a href="{% url 'shop-accessories' %}">Accessories</a></li>
-                        <li><a href="{% url 'shop-spare-parts' %}">Spare parts</a></li>
-                        <li><a href="{% url 'shop-clothes' %}">Clothes</a></li>
+						<li><a href="{% url 'shop-bicycles' %}">Accessories</a></li>
+                        <li><a href="{% url 'shop-bicycles' %}">Spare parts</a></li>
+                        <li><a href="{% url 'shop-bicycles' %}">Clothes</a></li>
 					</ul>
 				</div>
 			</div>

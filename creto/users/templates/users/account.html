@@ -13,4 +13,31 @@
 </section>
 <!-- ============== HEADER-TITLE END ============== -->
 
+<div class="container ctr-account">
+    <h2 class="title h2-personal-info">Personal information</h2>
+    <div class="ctr-personal-info">
+        <h5 class="title ttl-personal-info">Name: </h5>
+        <p class="p-personal-info">{{ user.first_name }}</p>
+    </div>
+    <div class="ctr-personal-info">
+        <h5 class="title ttl-personal-info">e-mail: </h5>
+        <p class="p-personal-info">{{ user.email }}</p>
+    </div>
+    <div class="ctr-personal-info">
+        <h5 class="title ttl-personal-info">Username: </h5>
+        <p class="p-personal-info">{{ user.username }}</p>
+    </div>
+    <a href="{% url 'logout' %}" class="btn btn-form btn-log-in"
+       type="submit">
+        <span>Log Out</span>
+    </a>
+    <h2 class="title h2-personal-info">Go to</h2>
+    <a href="{% url 'cart-detail' %}" class="btn btn-form btn-log-in" type="submit" style="margin-right: 20px;">
+        <span>Cart</span>
+    </a>
+    <a href="{% url 'wishlist-detail' %}" class="btn btn-form btn-log-in" type="submit">
+        <span>Wishlist</span>
+    </a>
+</div>
+
 {% endblock %}

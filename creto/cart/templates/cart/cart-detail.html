@@ -1,0 +1,101 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- ================ HEADER-TITLE ================ -->
+<section class="s-header-title">
+    <div class="container">
+        <h1>CART</h1>
+        <ul class="breadcrambs">
+            <li><a href="{% url 'main-page' %}">HOME</a></li>
+        </ul>
+    </div>
+</section>
+<!-- ============== HEADER-TITLE END ============== -->
+<div class="col-12 col-lg-9 shop-cover">
+    <div class="shop-sort-cover">
+        <h3 class="sort-left">{{ cart|length }} items found</h3>
+        <h3 class="sort-left">Total price: ${{ cart.get_total_price }}</h3>
+    </div>
+    <div class="shop-product-cover">
+        <div class="row product-cover block">
+            {% for item in cart %}
+            {% with product=item.product %}
+            <div class="col-12 col-sm-4 prod-item-col">
+                <div class="product-item">
+                    <a href="" class="product-img">
+                        <img src="{{ product.bicycle_image.url }}" alt="product">
+                    </a>
+                    <div class="product-item-wrap">
+                        <div class="product-item-cover">
+                            <div class="price-cover">
+                                <div class="new-price">${{ item.price }}</div>
+                            </div>
+                            <h6 class="prod-title">
+                                <div><span>{{ product.bicycle_name }}</span></div>
+                                <div><span> {{ product.bicycle_type }} bike</span></div>
+                                <div><span>Qantity: {{ item.quantity }}</span></div>
+                                <div><span>Total price: ${{ item.total_price }}</span></div>
+                            </h6>
+                            <div style="text-align: center">
+                                <a href="{% url 'cart-remove' product.id %}" class="btn"><span>remove</span></a>
+                            </div>
+                        </div>
+                        <div class="prod-info">
+                            <ul class="prod-list">
+                                <li>Brand:
+                                    <span>{{ product.bicycle_brand }}</span>
+                                </li>
+                                <li>Type:
+                                    <span>{{ product.bicycle_type }}</span>
+                                </li>
+                                <li>Frame Size:
+                                    <span>{{ item.frame_size }}</span>
+                                </li>
+                                <li>Wheel Size:
+                                    <span>{{ item.wheel_size }}</span>
+                                </li>
+                                <li>Number of speeds:
+                                    <span>{{ product.bicycle_number_of_speeds }}</span>
+                                </li>
+                                <li>Manufactured:
+                                    <span>{{ product.bicycle_manufacturer_country}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endwith %}
+            {% endfor %}
+        </div>
+        {% if products.has_other_pages %}
+        <div class="pagination-cover">
+                        <ul class="pagination">
+                            {% if products.has_previous %}
+                            <li class="pagination-item item-prev">
+                                <a href="?page={{ bicycles.previous_page_number }}">
+                                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% for page in custom_range %}
+                                {% if page == products.number %}
+                                    <li class="pagination-item active"><a href="?page={{ page }}">{{ page }}</a></li>
+                                {% else %}
+                                    <li class="pagination-item"><a href="?page={{ page }}">{{ page }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                            {% if products.has_next %}
+                            <li class="pagination-item item-next">
+                                <a href="?page={{ bicycles.next_page_number }}">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -79,32 +79,27 @@
 						{% endif %}
 					</div>
 					<div class="single-color">
-						<label>class:</label>
+						<h4 class="single-bicycle-label">class :</h4>
 						<span class="name-color">{{ bicycle.bicycle_class }}</span>
 					</div>
 					<div class="single-color">
-						<label>type:</label>
+						<h4 class="single-bicycle-label">type:</h4>
 						<span class="name-color">{{ bicycle.bicycle_type }}</span>
 					</div>
-					<div class="frame-size">
-						<label>frame size:</label>
-						<ul>
-							{% for frame_size in bicycle.bicycle_frame_sizes.all %}
-							<li>{{ frame_size }}</li>
-							{% endfor %}
-						</ul>
-					</div>
-					<div class="wheel-size">
-						<label>wheel size:</label>
-						<ul>
-							{% for wheel_size in bicycle.bicycle_wheel_sizes.all %}
-							<li>{{ wheel_size }}</li>
-							{% endfor %}
-						</ul>
-					</div>
-					<div class="single-btn-cover\">
-						<a href="#" class="btn btn-buy-now"><span>buy now</span></a>
-						<a href="#" class="btn btn-wishlist"><span>add to wishlist</span></a>
+					<div>
+						<form action="{% url 'cart-add' bicycle.id %}" method="post">
+							<h4 class="single-bicycle-label">quantity:</h4>
+							<div>{{ cart_product_form.quantity }}</div>
+							<h4 class="single-bicycle-label">frame size:</h4>
+							<div>{{ cart_product_form.frame_size }}</div>
+							<h4 class="single-bicycle-label">wheel size:</h4>
+							<div>{{ cart_product_form.wheel_size }}</div>
+							{% csrf_token %}
+    						<div class="single-btns">
+								<button name="cart" class="btn btn-form" type="submit"><span>Add to cart</span></button>
+								<button name="wishlist" class="btn btn-form" type="submit"><span>Add to wishlist</span></button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -182,120 +177,6 @@
 		</div>
 	</section>
 	<!--============= SINGLE-SHOP-TABS END =============-->
-
-	<!--=============== RELATED PRODUCTS ===============-->
-	<section class="s-related-products">
-		<div class="container">
-			<h2 class="title">Related Products</h2>
-			<div class="row product-cover">
-				<div class="col-sm-6 col-lg-3">
-					<div class="product-item">
-						<span class="top-sale">top sale</span>
-						<ul class="product-icon-top">
-							<li><a href="#"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
-							<li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a></li>
-						</ul>
-						<a href="single-shop.html" class="product-img"><img src="assets/img/prod-1.png" alt="product"></a>
-						<div class="product-item-cover">
-							<div class="price-cover">
-								<div class="new-price">$1.699</div>
-								<div class="old-price">$1.799</div>
-							</div>
-							<h6 class="prod-title"><a href="single-shop.html">Granite Peak 24" <br>Girls Mountain Bike</a></h6>
-							<a href="single-shop.html" class="btn"><span>buy now</span></a>
-						</div>
-						<div class="prod-info">
-							<ul class="prod-list">
-								<li>Frame Size: <span>17</span></li>
-								<li>Class: <span>City</span></li>
-								<li>Number of speeds: <span>7</span></li>
-								<li>Type: <span>Rigid</span></li>
-								<li>Country registration: <span>USA</span></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-lg-3">
-					<div class="product-item">
-						<ul class="product-icon-top">
-							<li><a href="#"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
-							<li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a></li>
-						</ul>
-						<a href="single-shop.html" class="product-img"><img src="assets/img/prod-2.png" alt="product"></a>
-						<div class="product-item-cover">
-							<div class="price-cover">
-								<div class="new-price">$1.699</div>
-							</div>
-							<h6 class="prod-title"><a href="single-shop.html">Hyper E-Ride Bike 700C <br>20+ Mile Range</a></h6>
-							<a href="single-shop.html" class="btn"><span>buy now</span></a>
-						</div>
-						<div class="prod-info">
-							<ul class="prod-list">
-								<li>Frame Size: <span>17</span></li>
-								<li>Class: <span>City</span></li>
-								<li>Number of speeds: <span>7</span></li>
-								<li>Type: <span>Rigid</span></li>
-								<li>Country registration: <span>USA</span></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-lg-3">
-					<div class="product-item">
-						<ul class="product-icon-top">
-							<li><a href="#"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
-							<li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a></li>
-						</ul>
-						<a href="single-shop.html" class="product-img"><img src="assets/img/prod-4.png" alt="product"></a>
-						<div class="product-item-cover">
-							<div class="price-cover">
-								<div class="new-price">$1.699</div>
-							</div>
-							<h6 class="prod-title"><a href="single-shop.html">New Spring Beach Cruiser <br>Bicycle Chrome</a></h6>
-							<a href="single-shop.html" class="btn"><span>buy now</span></a>
-						</div>
-						<div class="prod-info">
-							<ul class="prod-list">
-								<li>Frame Size: <span>17</span></li>
-								<li>Class: <span>City</span></li>
-								<li>Number of speeds: <span>7</span></li>
-								<li>Type: <span>Rigid</span></li>
-								<li>Country registration: <span>USA</span></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-lg-3">
-					<div class="product-item">
-						<span class="sale">11%</span>
-						<ul class="product-icon-top">
-							<li><a href="#"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
-							<li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a></li>
-						</ul>
-						<a href="single-shop.html" class="product-img"><img src="assets/img/prod-3.png" alt="product"></a>
-						<div class="product-item-cover">
-							<div class="price-cover">
-								<div class="new-price">$1.699</div>
-								<div class="old-price">$1.799</div>
-							</div>
-							<h6 class="prod-title"><a href="single-shop.html">Lightweight M370-27speed <br>Aluminum Alloy Mantis</a></h6>
-							<a href="single-shop.html" class="btn"><span>buy now</span></a>
-						</div>
-						<div class="prod-info">
-							<ul class="prod-list">
-								<li>Frame Size: <span>17</span></li>
-								<li>Class: <span>City</span></li>
-								<li>Number of speeds: <span>7</span></li>
-								<li>Type: <span>Rigid</span></li>
-								<li>Country registration: <span>USA</span></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!--============= RELATED PRODUCTS END =============-->
 
 	<!--=================== SCRIPT	===================-->
 	<script src="{% static 'js/jquery-2.2.4.min.js' %}"></script>

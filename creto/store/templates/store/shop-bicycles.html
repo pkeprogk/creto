@@ -20,61 +20,76 @@
         <div class="row">
             <div class="col-12 col-lg-3 shop-sidebar">
                 <ul class="widgets wigets-shop">
-                    <li class="widget wiget-shop-category">
+                    <li class="widget wiget-shop-category" style="margin-bottom: 40px;">
                         <h5 class="title">Categories</h5>
                          <ul>
                             <li><a href="{% url 'shop-bicycles' %}">Bicycles</a></li>
-                            <li><a href="{% url 'shop-accessories' %}">Accessories</a></li>
-                            <li><a href="{% url 'shop-spare-parts' %}">Spare parts</a></li>
-                            <li><a href="{% url 'shop-clothes' %}">Clothes</a></li>
+                            <li><a href="{% url 'shop-bicycles' %}">Accessories</a></li>
+                            <li><a href="{% url 'shop-bicycles' %}">Spare parts</a></li>
+                            <li><a href="{% url 'shop-bicycles' %}">Clothes</a></li>
                         </ul>
                     </li>
-                    <li class="widget wiget-shop-category">
-                        <h5 class="title">type</h5>
-                        <ul>
-                            {% for type in bicycle_types %}
-                            <li>
-                                <p><input type="checkbox"><span>{{ type }}</span></p>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                    <li class="widget wiget-brand">
-                        <h5 class="title">brand</h5>
-                        <ul>
-                            {% for brand in bicycle_brands %}
-                            <li>
-                                <p><input type="checkbox"><span>{{ brand }}</span></p>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                    <li class="widget wiget-price">
-                        <h5 class="title">price($)</h5>
-                        <div id="slider-range"></div>
-                        <div class="amount-cover">
-                            <input type="text" id="amount-min">
-                            <span>&mdash;</span>
-                            <input type="text" id="amount-max">
-                        </div>
-                    </li>
+                    <form method="get">
+                        <li class="widget wiget-shop-category">
+                            <h5 class="title">type</h5>
+                            <ul>
+                                {% for type in bicycle_types %}
+                                <li>
+                                    <p>
+                                        <input type="checkbox" name="bicycle_type" value="{{ type }}" {% if type in request.GET.bicycle_type %}checked{% endif %}>
+                                        <span>{{ type }}</span>
+                                    </p>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li class="widget wiget-brand">
+                            <h5 class="title">brand</h5>
+                            <ul>
+                                {% for brand in bicycle_brands %}
+                                <li>
+                                    <p><input type="checkbox" name="brand" value="{{ brand }}"
+                                              {% if brand in request.GET.brand %}checked{% endif %}>
+                                        <span>{{ brand }}</span>
+                                    </p>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li class="widget wiget-price">
+                            <h5 class="title">price($)</h5>
+                            <div class="amount-cover"
+                                 style="margin-bottom: 30px;">
+                                <div>
+                                <label for="amount-min">Min:</label>
+                                <input type="text" name="min_price" id="amount-min" value="{{ request.GET.min_price }}">
+                                </div>
+                                <div>
+                                <label for="amount-max">Max:</label>
+                                <input type="text" name="max_price" id="amount-max" value="{{ request.GET.max_price }}">
+                                </div>
+                            </div>
+                        </li>
+                        <button class="btn btn-form" type="submit" style="width: 100%; margin-bottom: 10px;"><span>Apply Filters</span></button>
+                        <a href="{% url 'shop-bicycles' %}" class="btn" style="width: 100%;"><span>Reset Filters</span></a>
+                    </form>
                 </ul>
-                <a href="#" class="reset-filter-btn">Reset Filters</a>
             </div>
             <div class="col-12 col-lg-9 shop-cover">
                 <h2 class="title">Bicycles</h2>
                 <div class="shop-sort-cover">
-                    <div class="sort-left">{{ bicycles|length }} items found</div>
+                    <div class="sort-left">{{ bicycles.paginator.count }} items found</div>
                     <div class="sort-right">
                         <div class="sort-by">
-                            <span class="sort-name">sort by:</span>
-                            <select class="nice-select">
-                                <option selected="selected" disabled>
-                                    best selling
-                                </option>
-                                <option>new product</option>
-                                <option>sale product</option>
+                            <form method="get">
+                            <label class="sort-name">sort by:</label>
+                            <select class="nice-select" name="sort" id="sort">
+                                <option selected="selected" disabled>best choice</option>
+                                <option value="price">price: low to high</option>
+                                <option value="price_desc">price: high to low</option>
                             </select>
+                                <button class="btn btn-form" type="submit"><span>Apply</span></button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -84,11 +99,11 @@
                         <div class="col-12 col-sm-4 prod-item-col">
                             <div class="product-item">
                                 {% if bicycle.bicycle_price_new != bicycle.bicycle_price_old %}
-                                    <span class="sale">SALE</span>
+                                        <span class="sale">SALE</span>
                                 {% endif %}
-                                <ul class="product-icon-top">
-                                    <li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a></li>
-                                </ul>
+                                <div class="product-icon-top">
+                                    <img src="{{ bicycle.bicycle_type_image.url }}" alt="product" class="product-bicycle-icon-type">
+                                </div>
                                 <a href="{% url 'single-bicycle' bicycle.id %}" class="product-img"><img src="{{ bicycle.bicycle_image.url }}" alt="product"></a>
                                 <div class="product-item-wrap">
                                     <div class="product-item-cover">
