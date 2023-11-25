@@ -1,4 +1,5 @@
 from django import forms
+from .models import Review
 
 
 class BicycleFilterForm(forms.Form):
@@ -13,3 +14,9 @@ class ContactForm(forms.Form):
     your_phone = forms.CharField(max_length=20)
     your_email = forms.EmailField(max_length=255)
     your_text = forms.CharField(widget=forms.Textarea)
+
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['review_text']

@@ -175,9 +175,23 @@ def single_bicycle(request, pk):
     bicycle = ProductBicycle.objects.get(pk=pk)
     cart_product_form = CartAddProductForm(product_id=pk)
 
+    reviews = Review.objects.filter(product=bicycle)
+    review_form = ReviewForm()
+
+    if request.method == 'POST' and request.user.is_authenticated:
+        review_form = ReviewForm(request.POST)
+        if review_form.is_valid():
+            review = review_form.save(commit=False)
+            review.user = request.user
+            review.product = bicycle
+            review.save()
+            review_form = ReviewForm()
+
     context = {
         'bicycle': bicycle,
-        'cart_product_form': cart_product_form
+        'cart_product_form': cart_product_form,
+        'review_form': review_form,
+        'reviews': reviews,
     }
 
     return render(request, 'store/single-bicycle.html', context)
